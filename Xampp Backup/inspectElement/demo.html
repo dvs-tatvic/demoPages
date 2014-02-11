@@ -1,0 +1,994 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("*").hover(function(){
+					$(this).css("border","1px solid black");
+					//if(this.tagName == "BODY") $(this).removeClass("borderLine");
+					
+					//$("#myTagName").text(this.tagName);
+					var myId = this.id;
+					var myClass = $(this).attr('class');
+					var parentId;
+					var parentClass;
+					if(myId=="")
+					{
+						parentId = $(this).parent().attr('id');
+						if(parentId == "")
+						{
+								parentId = $(this).parentsUntil().attr('id');
+						}
+						$("#parentTagId").text(parentId);
+					}
+					
+					if(myClass == undefined)
+					{
+						parentClass = $(this).parent().attr('class');
+						if(parentClass == undefined)
+						{
+								parentClass = $(this).parentsUntil().attr('class');
+						}
+						$("#parentTagClass").text(parentClass);
+						
+					}
+										
+					
+					$("#myTagName").text(this.tagName);
+					$("#tagProperty").text(" id : "+myId+" || class : "+myClass);
+					
+				});
+				
+				$("*").mouseout(function(){
+					$(this).css("border","none");
+					$("#parentTagId").text("");
+					$("#parentTagClass").text("");
+					
+				});
+			});
+		</script>
+  <meta charset="UTF-8">
+    <!-- Optimizely dogfood -->
+<script type="text/javascript" src="//cdn.optimizely.com/js/5935064.js"></script>
+ 
+  <link rel="canonical" href="https://www.optimizely.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.optimizely.com/" />
+  <meta property="og:image" content="https://s3.amazonaws.com/optimizely-marketing/optimizely.png" />
+
+  <link rel="stylesheet" type="text/css" href="//cloud.typography.com/7838232/802822/css/fonts.css" />
+
+  
+    <link rel="stylesheet" href="/static/css/www-master-1328.373563028413402089/style.css" type="text/css" />
+  
+
+  <!-- Chartbeat -->
+  
+  <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
+  
+
+  
+  <script>
+    ;window.Modernizr=function(a,b,c){function y(a){j.cssText=a}function z(a,b){return y(prefixes.join(a+";")+(b||""))}function A(a,b){return typeof a===b}function B(a,b){return!!~(""+a).indexOf(b)}function C(a,b){for(var d in a){var e=a[d];if(!B(e,"-")&&j[e]!==c)return b=="pfx"?e:!0}return!1}function D(a,b,d){for(var e in a){var f=b[a[e]];if(f!==c)return d===!1?a[e]:A(f,"function")?f.bind(d||b):f}return!1}function E(a,b,c){var d=a.charAt(0).toUpperCase()+a.slice(1),e=(a+" "+n.join(d+" ")+d).split(" ");return A(b,"string")||A(b,"undefined")?C(e,b):(e=(a+" "+o.join(d+" ")+d).split(" "),D(e,b,c))}var d="2.6.2",e={},f=!0,g=b.documentElement,h="modernizr",i=b.createElement(h),j=i.style,k,l={}.toString,m="Webkit Moz O ms",n=m.split(" "),o=m.toLowerCase().split(" "),p={svg:"http://www.w3.org/2000/svg"},q={},r={},s={},t=[],u=t.slice,v,w={}.hasOwnProperty,x;!A(w,"undefined")&&!A(w.call,"undefined")?x=function(a,b){return w.call(a,b)}:x=function(a,b){return b in a&&A(a.constructor.prototype[b],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(b){var c=this;if(typeof c!="function")throw new TypeError;var d=u.call(arguments,1),e=function(){if(this instanceof e){var a=function(){};a.prototype=c.prototype;var f=new a,g=c.apply(f,d.concat(u.call(arguments)));return Object(g)===g?g:f}return c.apply(b,d.concat(u.call(arguments)))};return e}),q.backgroundsize=function(){return E("backgroundSize")},q.svg=function(){return!!b.createElementNS&&!!b.createElementNS(p.svg,"svg").createSVGRect};for(var F in q)x(q,F)&&(v=F.toLowerCase(),e[v]=q[F](),t.push((e[v]?"":"no-")+v));return e.addTest=function(a,b){if(typeof a=="object")for(var d in a)x(a,d)&&e.addTest(d,a[d]);else{a=a.toLowerCase();if(e[a]!==c)return e;b=typeof b=="function"?b():b,typeof f!="undefined"&&f&&(g.className+=" "+(b?"":"no-")+a),e[a]=b}return e},y(""),i=k=null,function(a,b){function k(a,b){var c=a.createElement("p"),d=a.getElementsByTagName("head")[0]||a.documentElement;return c.innerHTML="x<style>"+b+"</style>",d.insertBefore(c.lastChild,d.firstChild)}function l(){var a=r.elements;return typeof a=="string"?a.split(" "):a}function m(a){var b=i[a[g]];return b||(b={},h++,a[g]=h,i[h]=b),b}function n(a,c,f){c||(c=b);if(j)return c.createElement(a);f||(f=m(c));var g;return f.cache[a]?g=f.cache[a].cloneNode():e.test(a)?g=(f.cache[a]=f.createElem(a)).cloneNode():g=f.createElem(a),g.canHaveChildren&&!d.test(a)?f.frag.appendChild(g):g}function o(a,c){a||(a=b);if(j)return a.createDocumentFragment();c=c||m(a);var d=c.frag.cloneNode(),e=0,f=l(),g=f.length;for(;e<g;e++)d.createElement(f[e]);return d}function p(a,b){b.cache||(b.cache={},b.createElem=a.createElement,b.createFrag=a.createDocumentFragment,b.frag=b.createFrag()),a.createElement=function(c){return r.shivMethods?n(c,a,b):b.createElem(c)},a.createDocumentFragment=Function("h,f","return function(){var n=f.cloneNode(),c=n.createElement;h.shivMethods&&("+l().join().replace(/\w+/g,function(a){return b.createElem(a),b.frag.createElement(a),'c("'+a+'")'})+");return n}")(r,b.frag)}function q(a){a||(a=b);var c=m(a);return r.shivCSS&&!f&&!c.hasCSS&&(c.hasCSS=!!k(a,"article,aside,figcaption,figure,footer,header,hgroup,nav,section{display:block}mark{background:#FF0;color:#000}")),j||p(a,c),a}var c=a.html5||{},d=/^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i,e=/^(?:a|b|code|div|fieldset|h1|h2|h3|h4|h5|h6|i|label|li|ol|p|q|span|strong|style|table|tbody|td|th|tr|ul)$/i,f,g="_html5shiv",h=0,i={},j;(function(){try{var a=b.createElement("a");a.innerHTML="<xyz></xyz>",f="hidden"in a,j=a.childNodes.length==1||function(){b.createElement("a");var a=b.createDocumentFragment();return typeof a.cloneNode=="undefined"||typeof a.createDocumentFragment=="undefined"||typeof a.createElement=="undefined"}()}catch(c){f=!0,j=!0}})();var r={elements:c.elements||"abbr article aside audio bdi canvas data datalist details figcaption figure footer header hgroup mark meter nav output progress section summary time video",shivCSS:c.shivCSS!==!1,supportsUnknownElements:j,shivMethods:c.shivMethods!==!1,type:"default",shivDocument:q,createElement:n,createDocumentFragment:o};a.html5=r,q(b)}(this,b),e._version=d,e._domPrefixes=o,e._cssomPrefixes=n,e.testProp=function(a){return C([a])},e.testAllProps=E,g.className=g.className.replace(/(^|\s)no-js(\s|$)/,"$1$2")+(f?" js "+t.join(" "):""),e}(this,this.document);
+</script>
+
+  
+  
+  
+    <script src="https://www.optimizely.com/js/www-master-1328.373563028413402089/bundle-s/bundle.js" type="text/javascript"></script>
+  
+  <script type="text/javascript">
+    var $ = jQuery = $j;
+  </script>
+
+  <!-- Knockout.js -->
+  <script type="text/javascript" src="/static/js/knockout.js"></script>
+  <!-- Waypoints.js -->
+  <script type="text/javascript" src="/static/js/waypoints.js"></script>
+  <meta name="keywords" content="AB test, split test, multivariate testing, conversion rate" />
+  <meta name="viewport" content="width=device-width">
+  
+    <meta name="description" content="Improve conversions through A/B Testing, Split Testing and Multivariate Testing with Optimizely!" />
+  
+
+  <meta property="og:title" content="Optimizely: A/B testing software you'll actually use" />
+  <title>Optimizely: A/B testing software you'll actually use</title>
+  <script type="text/javascript">
+    optly.IndexPage.initialize();
+  </script>
+
+</head>
+<body class="index click-device" data-page-name="index">
+<label>This is TagName : </label><label id="myTagName"></label><br>
+		<label>Tag Property : </label><label id="tagProperty"></label><br>
+		<label>Parent Tag Id : </label><label id="parentTagId"></label><br>
+		<label>Parent Tag Class : </label><label id="parentTagClass"></label>
+
+  <div class="wrapper">
+    
+  <div id="top">
+    <div>
+      <div class="announcement SL_hide">
+        <strong>News:</strong> Optimizely featured on Bloomberg!
+          <a href="http://blog.optimizely.com/2013/04/12/bloomberg-interviews-optimizely-ceo-dan-siroker/">Watch it now.</a></div>
+      <ul class="nav-top signed-out" data-bind="'visible': !signedIn()">
+  <li><a class="show-create-account">Sign Up</a></li>
+  <li><a id='show-sign-in' class="show-sign-in">Log In</a></li>
+</ul>
+<ul class="nav-top signed-in" data-bind="'visible': signedIn">
+  <li id="dashboard-link" data-bind="'if': experimentMenu.showDashboardLink()">
+    <a href="/dashboard"
+       data-bind="'attr': { 'href': experimentMenu.dashboardLink() }">
+      Dashboard
+    </a>
+  </li>
+  <li id="my-experiment-menu" class="dropdown" data-bind="css: { shown: experimentMenu.shown }">
+    <a id="show-experiments-menu" class="dropdown-arrow" data-bind="'click': experimentMenu.toggle">
+      Experiments
+    </a>
+
+    <ul class="dropdown-menu-top">
+      <div class="message" data-bind="text: experimentMenu.message,
+                                      visible: experimentMenu.message"></div>
+      <span data-bind="foreach: experimentMenu.experiments, visible: experimentMenu.message() === ''">
+        <li>
+          <a class="edit" data-bind="attr: { href: '/edit?experiment_id=' + id() },
+                                     visible: can_edit">
+            <span data-bind="text: description"></span>
+          </a>
+          <a class="edit disabled" data-bind="attr: { href: 'javascript:;' },
+                                     visible: !can_edit()">
+            <span data-bind="text: description"></span>
+          </a>
+          <a class="results" data-bind="attr: { href: '/results?experiment_id=' + id() },
+                                        visible: has_started()">Results</a>
+        </li>
+      </span>
+      <li class="view-all-experiments" data-bind="'visible': experimentMenu.showDashboardLink">
+        <a id="view-all-experiments-link" href="/dashboard"
+          data-bind="attr: { href: experimentMenu.dashboardLink() }">
+          <span>View All Experiments</span></a>
+      </li>
+      <li class="show-create-experiment"
+          data-bind="click: experimentMenu.hide">+ <a href="#">Create New Experiment</a>
+      </li>
+    </ul>
+  </li>
+  <li><a data-bind="click: showImplementationDialog">Implementation</a></li>
+  <li id="my-account-menu" class="dropdown dropdown-account" data-bind="css: { shown: accountMenu.shown }">
+    <a class="account-menu-username dropdown-arrow" data-bind="click: accountMenu.toggle,
+                  css: { 'is-admin': isAdmin }, text: username">
+    </a>
+    <ul class="dropdown-menu-top">
+      <li><a href="/account">Account Settings</a></li>
+      <li><a href="https://help.optimizely.com" target="_blank">Support</a></li>
+      <li><a id='sign-out' data-bind="click: signOut">Log Out</a></li>
+    </ul>
+  </li>
+</ul>
+
+    </div>
+  </div>
+
+
+    
+  <div id="header">
+    
+  <div class="background"><div></div></div>
+
+    <div class="content">
+       <h1 class="logo"><a href="/">Optimizely</a></h1>
+        <ul class="nav-main">
+          <li class="dropdown-hover"><a href="/benefits">Features &amp; Benefits</a>
+            <ul class="dropdown-menu-nav-main">
+              <li><a href="/pricing">Plans and Pricing</a></li>
+              <li><a href="/benefits">Benefits</a></li>
+              <li><a href="/agencies" class="SL_hide">Optimizely for Agencies</a></li>
+              <li><a href="/developers" class="SL_hide">Optimizely for Developers</a></li>
+              <li><a href="/ecommerce" class="SL_hide">Optimizely for E-commerce</a></li>
+              <li><a href="/enterprises" class="SL_hide">Optimizely for Enterprises</a></li>
+              <li><a href="/publishers" class="SL_hide">Optimizely for Publishers</a></li>
+              <li><a href="/small-business" class="SL_hide">Optimizely for Small Business</a></li>
+            </ul>
+          </li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li class="dropdown-hover"><a href="/customers">Customers</a>
+            <ul class="dropdown-menu-nav-main">
+              <li><a href="/customers">Customer List</a></li>
+              <li><a href="/customers/customer-stories">Customer Stories</a></li>
+            </ul>
+          </li>
+          <li class="dropdown-hover"><a href="/ab-testing">Resources</a>
+            <ul class="dropdown-menu-nav-main">
+              <li><a href="/ab-testing">What is A/B Testing?</a></li>
+              <li><a href="/split-testing">What is Split Testing?</a></li>
+              <li><a href="/gettingstarted">Getting Started</a></li>
+              <li><a href="/resources/live-demo-webinar">Webinar Signup</a></li>
+              <li><a href="/faq">FAQ</a></li>
+              <li><a href="https://help.optimizely.com" target="_blank">Knowledge Base</a></li>
+              <li><a href="/docs/api">API Documentation</a></li>
+              <li id="SL-link-blog" class="SL_swap"><a href="http://blog.optimizely.com" target="_blank">Blog</a></li>
+              
+              
+            </ul>
+          </li>
+          <li><a href="/jobs">Jobs</a></li>
+        </ul>
+       
+  <div class="hero">
+    <h1>A/B testing you'll actually use.</h1>
+    <h2>Website optimization made easy.</h2>
+    <div class="grid4 center SL_hide">
+      <h5><a class="video-link" href="https://fast.wistia.net/embed/iframe/gxttknv8aa?autoPlay=true&controlsVisibleOnLoad=true&version=v1&volumeControl=true">Watch it in action</a></h5>
+    </div>
+    <div id="cta"class="cta grid12 center">
+      <div id="cta-box" class="cta-box clearfix">
+        <form action="#">
+          <label class="url-label" for="url-input">Type in a URL to try it out</label>
+          <input type="text" name="url-input" id="url-input" class="url-input left" value="" autocomplete="off" />
+          <button type="submit" class="primary-button right">Test it Out</button>
+        </form>
+      </div>
+    </div><!-- #cta -->
+  </div><!-- .hero -->
+
+    </div>
+  </div>
+
+
+    
+    
+
+    
+  <div id="main-container">
+    <div class="grids-container clearfix" id="customers">
+      <h2 class="grid14 divider-heading center blue">Over 6,000 Happy Customers</h2>
+      <ul class="customer-list">
+  <li><img src="/static/img/customers/index-logos-s89e36a5952.png" class="starbucks" alt="Starbucks logo" width="184" height="730" /></li>
+  <li><img src="/static/img/customers/index-logos-s89e36a5952.png" class="desk" alt="Desk logo" width="184" height="730" /></li>
+  <li><img src="/static/img/customers/index-logos-s89e36a5952.png" class="fico" alt="Fico logo" width="184" height="730" /></li>
+  <li><img src="/static/img/customers/index-logos-s89e36a5952.png" class="mtv" alt="MTV logo" width="184" height="730" /></li>
+  <li><img src="/static/img/customers/index-logos-s89e36a5952.png" class="abc" alt="ABC logo" width="184" height="730" /></li>
+</ul>
+
+      <ul class="customer-list">
+  <li><img src="/static/img/customers/index-logos-s89e36a5952.png" class="fox" alt="Fox logo" width="184" height="730" /></li>
+  <li><img src="/static/img/customers/index-logos-s89e36a5952.png" class="guardian" alt="The Guardian logo" width="184" height="730" /></li>
+  <li><img src="/static/img/customers/index-logos-s89e36a5952.png" class="cbs" alt="CBS logo" width="184" height="730" /></li>
+  <li><img src="/static/img/customers/index-logos-s89e36a5952.png" class="disney" alt="The Walt Disney Company logo" width="184" height="730" /></li>
+  <li><img src="/static/img/customers/index-logos-s89e36a5952.png" class="techcrunch" alt="TechCrunch logo" width="184" height="730" /></li>
+</ul>
+
+    </div>
+
+    <div class="benefit">
+      <div class="benefit-graphic sprite-container sprite-track" id="SL-img-benefits-track">
+        <img src="/static/img/index/sprites-s9a27248323.png" alt="Graphic of tracking elements on a web page" width="400" height="965">
+      </div>
+      <div class="benefit-copy">
+        <h3>Track what matters to you</h3>
+        <p>
+          Track engagement, clicks, conversions, sign-ups, or anything else that matters to you and your business. Optimizely's custom goal tracking provides an endless range of measurable actions that you can define. Just tell Optimizely what to measure, and we'll do the rest.
+        </p>
+      </div>
+    </div>
+
+    <div class="benefit">
+      <div class="benefit-copy">
+        <h3>Say goodbye to technical bottlenecks and hello to actionable data</h3>
+        <p>
+          When it's time to take action and make changes to your site, there is no replacement for dedicated technical resources &mdash; in most organizations, these resources are hard to come by and typically demand waiting in line. Optimizely acts as your on-demand technical team, with technology that turns your creative changes into instantly generated and deployed code.
+        </p>
+      </div>
+      <div class="benefit-graphic sprite-container sprite-actionabledata" id="SL-img-benefits-actionabledata">
+        <img src="/static/img/index/sprites-s9a27248323.png" alt="Sample results displayed in a graph" width="400" height="965">
+      </div>
+    </div>
+
+    <div class="benefit">
+      <div class="benefit-graphic sprite-container sprite-revenuenow" id="SL-img-benefits-revenuenow">
+        <img src="/static/img/index/sprites-s9a27248323.png" alt="Allocate all traffic to the winning variation." width="400" height="965">
+      </div>
+      <div class="benefit-copy">
+        <h3>Revenue now, deploy later</h3>
+        <p>
+          When you find winning variations, you can immediately allocate 100% of your visitors to those variations, until your technical team can deploy those changes to your live site. This means you never have to wait to react to the performance insights your tests uncover, and the results they yield.
+        </p>
+      </div>
+    </div>
+
+    <div class="call-to-action grid14 center a-center"><h3>Try Optimizely FREE for 30 days! <a class="show-create-account primary-button">Sign Up Today</a></h3></div>
+
+    <div id="in-the-news">
+      <h2>In the News</h2>
+      <ul>
+        <li>
+          <div class="sprite-container sprite-nytimes grid3 left">
+            <img src="/static/img/index/sprites-s9a27248323.png" alt="The New York Times" width="400" height="965">
+          </div>
+          <div class="grid5 right">
+            <time datetime="2013-05-01">May 1, 2013</time>
+            <h4>One Entrepreneur's Favorite Start-Up Tools</h4>
+            <h6><a href="http://boss.blogs.nytimes.com/2013/05/01/one-entrepreneurs-favorite-start-up-tools/" target="_blank">Read the Story &raquo;</a></h6>
+          </div>
+        </li>
+        <li>
+          <div class="sprite-container sprite-forbes grid3 left">
+            <img src="/static/img/index/sprites-s9a27248323.png" alt="Forbes" width="400" height="965">
+          </div>
+          <div class="grid5 right">
+            <time datetime="2013-04-10">April 10, 2013</time>
+            <h4>Optimizely Raises $28 Million To Expand To Custom Website Service</h4>
+            <h6><a href="http://www.forbes.com/sites/tomiogeron/2013/04/10/optimizely-raises-28-million-to-expand-to-custom-website-service/" target="_blank">Read the Story &raquo;</a></h6>
+          </div>
+        </li>
+        <li>
+          <div class="sprite-container sprite-techcrunch grid3 left">
+            <img src="/static/img/index/sprites-s9a27248323.png" alt="TechCrunch" width="400" height="965">
+          </div>
+          <div class="grid5 right">
+            <time datetime="2013-04-10">April 10, 2013</time>
+            <h4>Website Testing Service Optimizely Raises $28M Round Led By Benchmark, Plans Global Expansion</h4>
+            <h6><a href="http://techcrunch.com/2013/04/10/optimizely-series-a/" target="_blank">Read the Story &raquo;</a></h6>
+          </div>
+        </li>
+        <li>
+          <div class="grid3 left">
+            <img src="/static/img/press-logos/wired.svg" alt="Wired logo" width="160">
+          </div>
+          <div class="grid5 right">
+            <time datetime="2013-04-25">April 25, 2013</time>
+            <h4>The A/B Test: Inside the Technology That’s Changing the Rules of Business</h4>
+            <h6><a href="http://www.wired.com/business/2012/04/ff_abtesting" target="_blank">Read the Story &raquo;</a></h6>
+          </div>
+        </li>
+      </ul>
+      <h6 class="view-more"><a href="/press">View more press mentions</a></h6>
+    </div><!-- #in-the-news -->
+
+  </div>
+
+
+
+    
+      <!-- .push for sticky footer -->
+      <div class="push"></div>
+    
+  </div>
+
+  
+  <div id="footer">
+    <div class="grids-container">
+      <div>
+        <div class="footer-logo">
+          <h1><a href="/">Optimizely</a></h1>
+        </div>
+        <div class="footer-line"></div>
+      </div>
+
+      <div class="footer-rightsreserved">
+        <p>&copy; 2014, Optimizely. All Rights Reserved</p>
+        <p>
+          <span id="SL-link-terms" class="SL_swap"><a href="/terms">Terms of Service</a></span>
+          <span>|</span>
+          <span id="SL-link-privacy" class="SL_swap"><a href="/privacy">Privacy Policy</a></span>
+          <span>|</span>
+          <a href="/security">Security</a>
+        </p>
+        <p>
+          <span id="SL-link-twitter" class="SL_swap"><a href="http://www.twitter.com/optimizely" class="footer-twitter">Twitter</a></span>
+          <span id="SL-link-facebook" class="SL_swap"><a href="http://www.facebook.com/optimizely" class="footer-facebook">Facebook</a></span>
+          <span id="SL-link-gplus" class="SL_swap"><a href="https://plus.google.com/113842166556345533815/posts" class="footer-gplus">Google Plus</a></span>
+        </p>
+      </div>
+
+      <div class="footer-page-links">
+        <div class="grid3">
+          <h4>Product Features &amp; Benefits</h4>
+          <p><a href="/pricing">Plans and Pricing </a></p>
+          <p><a href="/benefits">Benefits</a></p>
+          <p><a href="/agencies" class="SL_hide">Optimizely for Agencies</a></p>
+          <p><a href="/developers" class="SL_hide">Optimizely for Developers</a></p>
+          <p><a href="/ecommerce" class="SL_hide">Optimizely for E-commerce</a></p>
+          <p><a href="/enterprises" class="SL_hide">Optimizely for Enterprises</a></p>
+          <p><a href="/publishers" class="SL_hide">Optimizely for Publishers</a></p>
+          <p><a href="/small-business" class="SL_hide">Optimizely for Small Business</a></p>
+        </div>
+        <div class="grid2">
+          <h4>Customers</h4>
+          <p><a href="/customers">Customer List</a></p>
+          <p><a href="/customers/customer-stories">Customer Stories</a></p>
+        </div>
+        <div class="grid3">
+          <h4>Resources</h4>
+          <p><a href="/ab-testing">What is A/B Testing?</a></p>
+          <p><a href="/split-testing">What is Split Testing?</a></p>
+          <p><a href="/gettingstarted">Getting Started</a></p>
+          <p><a href="/resources/live-demo-webinar">Webinar Signup</a></p>
+          <p><a href="/faq">FAQ</a></p>
+          <p><a href="https://help.optimizely.com" target="_blank">Knowledge Base</a></p>
+          <p><a href="/docs/api">API Documentation</a></p>
+          <p id="SL-link-blog" class="SL_swap"><a href="http://blog.optimizely.com" target="_blank">Blog</a></p>
+        </div>
+        <div class="grid1">
+          <h4>About</h4>
+          <p><a href="/about">About</a></p>
+          <p><a href="/jobs">Jobs</a></p>
+          
+          <p><a href="/press">Press</a></p>
+          <p><a href="/events">Events</a></p>
+          <p><a href="/contact">Contact</a></p>
+        </div>
+        <div class="grid2">
+          <h4>Other</h4>
+          
+          <p><a href="/partners">Certified Partners</a></p>
+          <p><a href="/demo">Request a Demo</a></p>
+          <p><a href="/opt_out">Opt Out</a></p>
+        </div>
+      </div>
+
+      <p class="language-selector SL_norewrite" translate="no">
+        <a href="https://www.optimizely.dk/" title="Danish">Dansk</a>
+        <a href="https://www.optimizely.de/" title="German">Deutsch</a>
+        <a href="https://www.optimizely.com/" title="English">English</a>
+        <a href="https://www.optimizely.es/" title="Spanish">Español</a>
+        <a href="https://www.optimizely.fr/" title="French">Français</a>
+        <a href="https://www.optimizely.it/" title="Italian">Italiano</a>
+        <a href="https://www.optimizely.jp/" title="Japanese">日本語</a>
+        <a href="https://www.optimizely.nl/" title="Dutch">Nederlands</a>
+        <a href="https://www.optimizely.pt/" title="Portuguese">Português</a>
+        <a href="https://www.optimizely.se/" title="Swedish">Svenska</a>
+      </p>
+    </div>
+  </div>
+
+
+  
+  
+
+  <div id="optimizely_error_dialog" class="dialog">
+  <div class="closer jqmClose"></div>
+
+  <div class="content">
+    <div class="header">
+      <h1>Something went wrong.</h1>
+    </div>
+
+    <div class="content-body">
+      <p id="optimizely_error_type"></p>
+      <p>
+        If this error persists, please let us know at our
+        <span id="SL-link-email-support" class="SL_swap">
+          <a target="_blank" href="https://help.optimizely.com/?ticket=true">
+            support page</a></span>.
+      </p>
+      <p>
+        Our engineering team has been notified.
+      </p>
+      <p id="optimizely_error_info"></p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="buttons">
+      <a class="secondary-button jqmClose">Close</a>
+    </div>
+  </div>
+</div>
+
+  <div id="compatibility-dialog" class="dialog narrow">
+  <div class="closer jqmClose"></div>
+  <div class="content">
+    <div class="header">
+      <h1>Browser Compatibility</h1>
+    </div>
+
+    <div class="content-body">
+      <p>
+        You are currently using a browser that is not supported by Optimizely's editor.
+        Please try using one of the following instead:
+      </p>
+
+      <ul class="list-unstyled">
+        <li>Chrome 20+</li>
+        <li>Firefox 4+</li>
+        <li>Internet Explorer 10+</li>
+        <li>Safari 5+</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="buttons">
+      <a class="secondary-button jqmClose">Close</a>
+    </div>
+  </div>
+</div>
+
+  <div id="create-account-dialog-container" class="dialog-container">
+  <div id="create-account-dialog" class="dialog narrow">
+    <form action="/account/create" method="post" autocomplete="off">
+      <div class="closer jqmClose"></div>
+      <div class="content">
+        <div class="header">
+          <h1 class="normal-header">Create a free account</h1>
+          <h1 class="anonymous-header">Sign up for free to get started</h1>
+
+          <p id="create-account-header-copy">You're seconds away from running A/B tests!</p>
+        </div>
+          <div class="content-body">
+        <label id="name-label">
+          <span>Name</span>
+          <input type="text" name="name" />
+        </label>
+
+        <label>
+          <span>Email address</span>
+          <input type="text" name="email" />
+        </label>
+
+        <label>
+          <span>Password</span>
+          <input type="password" name="password1" class="password1" />
+        </label>
+
+        <label>
+          <span>Confirm password</span>
+          <input type="password" name="password2" />
+        </label>
+
+        <label id="phone-label">
+          <span>Phone number</span>
+          <input type="text" name="phone_number" />
+        </label>
+
+        <label class="spaced">
+          <input type="checkbox" name="terms-of-service" />
+          I agree to the
+          <span id="SL-link-terms" class="SL_swap"><a href="/terms" target="_blank">Terms of Service</a></span> and
+          <span id="SL-link-privacy" class="SL_swap"><a href="/privacy" target="_blank">Privacy Policy</a></span>.
+        </label>
+
+        <input id="hidden" type="hidden" name="hidden" value="" />
+
+        <div class="options">
+          Already have an Optimizely account?
+          <a class="show-sign-in">Sign in here</a>
+        </div>
+      </div>
+      </div>
+      <div class="footer">
+        <p class="message"></p>
+        <div class="buttons">
+          <input type="submit" class="primary-button submit" value="Create account">
+          <input type="button" class="secondary-button jqmClose" value="Cancel">
+          <a class="secondary-button jqmClose later-button">I'll do this later</a>
+          <input type="submit" class="hiddenSubmit" value="" />
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+  <div id="create-experiment-dialog">
+  <form>
+    <div class="dialog narrow">
+      <div class="closer jqmClose"></div>
+      <div class="content">
+        <div class="header">
+            <h1>Create Experiment</h1>
+            <p class="with-project-id">
+                Your new experiment will appear under "DRAFTS" until you start it.
+                Then it will appear under "ACTIVE".
+            </p>
+            <p class="without-project-id">
+                Enter a URL below to get started on a new experiment!
+            </p>
+        </div>
+        <div class="content-body">
+          <label>
+              <span>Experiment Name (optional)</span>
+              <input type="text" name="name" />
+          </label>
+          <label>
+              <span>Experiment URL</span>
+              <input type="text" name="url" />
+          </label>
+        </div>
+      </div>
+      <div class="footer">
+        <p class="message"></p>
+        <div class="buttons">
+          <a id="experiment-create-button" class="primary-button submit">Create experiment</a>
+          <a class="secondary-button jqmClose">Cancel</a>
+          <input type="submit" class="hiddenSubmit" value="" />
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+  <div id="create-ios-experiment-dialog">
+  <form>
+    <div class="dialog narrow">
+      <div class="closer jqmClose"></div>
+      <div class="content">
+        <div class="header">
+          <h1>Create iOS Experiment</h1>
+          <p>
+            Your new experiment will appear under "DRAFTS" until you start it.
+            Then it will appear under "ACTIVE".
+          </p>
+        </div>
+        <div class="content-body">
+          <label>
+            <span>Experiment Name</span>
+            <input type="text" name="name"/>
+          </label>
+        </div>
+      </div>
+      <div class="footer">
+        <p class="message"></p>
+        <div class="buttons">
+          <a id="experiment-create-button" class="primary-button submit">Create experiment</a>
+          <a class="secondary-button jqmClose">Cancel</a>
+          <input type="submit" class="hiddenSubmit" value=""/>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+  <div id="forgot-password-dialog">
+  <form action="/recover/request" method="post" autocomplete="off">
+    <div class="dialog narrow">
+      <div class="closer jqmClose"></div>
+      <div class="content">
+        <div class="header">
+          <h1>Forgot Password</h1>
+        </div>
+
+        <div class="content-body">
+          <p>We'll send you an email with a link to reset your password.</p>
+
+          <label>
+            <span>Email address:</span>
+            <input type="text" name="email" class="email" />
+          </label>
+        </div>
+      </div>
+      <div class="footer">
+        <p class="message"></p>
+        <div class="buttons">
+          <a class="primary-button submit">Send email</a>
+          <a class="cancel-button secondary-button jqmClose">Cancel</a>
+          <a class="close-button secondary-button">OK</a>
+          <input type="submit" class="hiddenSubmit" value="" />
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+  <div id="implementation-dialog" class="dialog">
+  <div class="closer jqmClose"></div>
+  <div class="content">
+    <div class="header">
+      <h1>Implementing Optimizely</h1>
+    </div>
+    <div class="content-body">
+      <div class="view-snippet">
+        <p class="default-instructions">
+          Copy this code and paste it immediately after your opening <strong>
+          &lt;head&gt;</strong> tag:
+        </p>
+
+        <p class="shopify-instructions">
+          <strong>
+            Because you are using the Shopify App, the Optimizely embed code is
+            already added to your shop automatically!
+          </strong>
+        </p>
+
+        <p class="shopify-instructions">
+          If you want to run Optimizely on a page NOT hosted by Shopify, copy
+          &amp;
+          paste this code snippet to the top of the <strong>
+          &lt;head&gt;</strong> tag:
+        </p>
+
+        <div id="default-project-code" class="code"></div>
+        <div class="copy-code-container">
+          <div class="copy-code-button secondary-button small" data-clipboard-target="default-project-code">
+            <span class="button-text">Copy to Clipboard</span>
+          </div>
+        </div>
+
+        <p>
+          Include this snippet on every page you want to run experiments on and
+          track as a goal. This snippet will not change. Note the //cdn prefix
+          is
+          NOT a typo.
+        </p>
+
+        <p class="last">
+          To add new projects, go to the <a href="/dashboard">
+          Dashboard</a>.
+        </p>
+      </div>
+
+      <div class="view-multi-account-snippet">
+        <p class="default-instructions">Copy this code and paste it immediately
+          after your opening <strong>&lt;head&gt;</strong> tag:</p>
+
+        <p class="shopify-instructions">
+          <strong>
+            Because you are using the Shopify App, the Optimizely embed code is
+            already added to your shop automatically!
+          </strong>
+        </p>
+
+        <p class="shopify-instructions">
+          If you want to run Optimizely on a page NOT hosted by Shopify, copy
+          &amp;
+          paste this code snippet to the top of the <strong>
+          &lt;head&gt;</strong> tag:
+        </p>
+
+        <div id="multi-project-code" class="code"></div>
+        <div class="copy-code-container">
+          <div class="copy-code-button secondary-button small" data-clipboard-target="multi-project-code">
+            <span class="button-text">Copy to Clipboard</span>
+          </div>
+        </div>
+
+        <p>
+          This <strong>Project Code</strong> snippet is unique to this project.
+          Include it on every page that should run this project's experiments
+          or
+          be tracked as a goal.
+        </p>
+
+        <p class="last">
+          Your account has more than one project, so be sure to add the correct
+          snippet. To view your projects and project codes, go to the
+          <a href="/dashboard">Dashboard</a>.
+        </p>
+      </div>
+
+      <div class="view-no-snippet">
+        <p>
+          Each project has a unique <strong>Project Code</strong> snippet that
+          must be included on every page running experiments or being tracked
+          as a goal.
+        </p>
+
+        <p>
+          Your account has more than one project, so be sure to add the correct
+          snippet. To view your projects and project codes, go to the
+          <a href="/dashboard">Dashboard</a>.
+        </p>
+
+        <p>
+          Click on <strong>Project Code</strong> to get your snippet:
+        </p>
+
+        <div class="last snippet-example"></div>
+      </div>
+
+      <div class="api">
+        <p>
+        For advanced implementations, see our <a href="/docs/api">API Documentation</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="buttons">
+      <a class="secondary-button jqmClose">Close</a>
+    </div>
+  </div>
+</div>
+
+  <div id="sign-in-dialog">
+  <form action="/account/signin" method="post" autocomplete="off">
+    <div class="dialog narrow no-esc">
+      <div class="closer jqmClose"></div>
+      <div class="content">
+        <div class="header">
+          <h1>Sign in to Optimizely</h1>
+        </div>
+        <div class="content-body">
+          <label>
+            <span>Email address</span>
+            <input type="text" name="email" />
+          </label>
+
+          <label>
+            <span>Password</span>
+            <input type="password" name="password" />
+          </label>
+
+          <label class="spaced">
+            <input type="checkbox" name="persist" checked="checked" />
+            Keep me signed in
+          </label>
+        </div>
+
+        <div class="options">
+          <a class="show-forgot-password">Forgot your password?</a><br />
+          No account? <a class="show-create-account">Register here</a>
+        </div>
+      </div>
+      <div class="footer">
+        <p class="message"></p>
+        <div class="buttons">
+          <input type="submit" class="primary-button submit" value="Sign in">
+          <input type="button" class="secondary-button jqmClose" value="Cancel">
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+  
+    
+<!-- Google Analytics -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-13208639-1']);
+  // _gaq.push(['_setDomainName', 'optimizely.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript';
+    ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+<!-- Marketo -->
+<script src="//munchkin.marketo.net/munchkin.js" type="text/javascript"></script>
+<script>mktoMunchkin("361-GER-922");</script>
+
+<!-- KISSmetrics -->
+<script type="text/javascript">
+  // Set KM_COOKIE_DOMAIN to prevent the cookie from appearing on unsafe
+  // subdomains (www.optimizelyedit.com) which are allowed to run third party
+  // code. This is important because KM exposes identity (email addresses) in
+  // the km_ai cookie.
+  // http://support.kissmetrics.com/apis/javascript/javascript-specific
+  var KM_COOKIE_DOMAIN = document.location.hostname || "www.optimizely.com";
+  var _kmq = _kmq || [];
+  _kmq.push(['record', document.location.pathname]);
+  function _kms(u){
+    setTimeout(function(){
+      var s = document.createElement('script'); var f = document.getElementsByTagName('script')[0]; s.type = 'text/javascript'; s.async = true;
+      s.src = u; f.parentNode.insertBefore(s, f);
+    }, 1);
+  }
+  _kms('//i.kissmetrics.com/i.js');
+  _kms('//doug1izaerwt3.cloudfront.net/77dea05a92e424e6ada1ef732acc92d17bfc199e.1.js');
+</script>
+
+<!-- Mixpanel -->
+<script type="text/javascript">
+var mpq = [];
+mpq.push(["init", "1b5e183a596c884095c865e3d26dad12"]);
+mpq.push(["track", document.location.pathname, {}]);
+(function() {
+var mp = document.createElement("script"); mp.type = "text/javascript"; mp.async = true;
+mp.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + "//api.mixpanel.com/site_media/js/api/mixpanel.js";
+var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(mp, s);
+})();
+</script>
+
+<!-- Chartbeat -->
+<script type="text/javascript">
+var _sf_async_config={uid:13674,domain:"optimizely.com"};
+(function(){
+  function loadChartbeat() {
+    window._sf_endpt=(new Date()).getTime();
+    var e = document.createElement('script');
+    e.setAttribute('language', 'javascript');
+    e.setAttribute('type', 'text/javascript');
+    e.setAttribute('src',
+       (("https:" == document.location.protocol) ? "https://s3.amazonaws.com/" : "http://") +
+       "static.chartbeat.com/js/chartbeat.js");
+    document.body.appendChild(e);
+  }
+  var oldonload = window.onload;
+  window.onload = (typeof window.onload != 'function') ?
+     loadChartbeat : function() { oldonload(); loadChartbeat(); };
+})();
+</script>
+
+<!-- Olark -->
+<script type='text/javascript'>
+function loadOlark() {
+  /*{literal}<![CDATA[*/window.olark||(function(i){var e=window,h=document,a=e.location.protocol=="https:"?"https:":"http:",g=i.name,b="load";(function(){e[g]=function(){(c.s=c.s||[]).push(arguments)};var c=e[g]._={},f=i.methods.length; while(f--){(function(j){e[g][j]=function(){e[g]("call",j,arguments)}})(i.methods[f])} c.l=i.loader;c.i=arguments.callee;c.f=setTimeout(function(){if(c.f){(new Image).src=a+"//"+c.l.replace(".js",".png")+"&"+escape(e.location.href)}c.f=null},20000);c.p={0:+new Date};c.P=function(j){c.p[j]=new Date-c.p[0]};function d(){c.P(b);e[g](b)}e.addEventListener?e.addEventListener(b,d,false):e.attachEvent("on"+b,d); (function(){function l(j){j="head";return["<",j,"></",j,"><",z,' onl'+'oad="var d=',B,";d.getElementsByTagName('head')[0].",y,"(d.",A,"('script')).",u,"='",a,"//",c.l,"'",'"',"></",z,">"].join("")}var z="body",s=h[z];if(!s){return setTimeout(arguments.callee,100)}c.P(1);var y="appendChild",A="createElement",u="src",r=h[A]("div"),G=r[y](h[A](g)),D=h[A]("iframe"),B="document",C="domain",q;r.style.display="none";s.insertBefore(r,s.firstChild).id=g;D.frameBorder="0";D.id=g+"-loader";if(/MSIE[ ]+6/.test(navigator.userAgent)){D.src="javascript:false"} D.allowTransparency="true";G[y](D);try{D.contentWindow[B].open()}catch(F){i[C]=h[C];q="javascript:var d="+B+".open();d.domain='"+h.domain+"';";D[u]=q+"void(0);"}try{var H=D.contentWindow[B];H.write(l());H.close()}catch(E){D[u]=q+'d.write("'+l().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}c.P(2)})()})()})({loader:(function(a){return "static.olark.com/jsclient/loader0.js?ts="+(a?a[1]:(+new Date))})(document.cookie.match(/olarkld=([0-9]+)/)),name:"olark",methods:["configure","extend","declare","identify"]});
+  /* custom configuration goes here (www.olark.com/documentation) */
+  olark.identify('8448-284-10-9707');/*]]>{/literal}*/
+}
+
+$j(function() {
+  var loaded = false;
+
+  function load(signedIn) {
+    if (loaded || !signedIn) {
+      return;
+    }
+
+    var plan = optly.page.account.subscription_plan;
+
+    if (plan && plan.match(/gold|platinum/)) {
+      loadOlark();
+      optly.page.account.updateOlarkStatus(signedIn);
+    }
+
+    loaded = true;
+  }
+
+  load(optly.page.account.isSignedIn);
+  optly.page.account.onSignInChanged.add(load);
+});
+</script>
+
+<!-- Adroll -->
+<script type="text/javascript">
+adroll_adv_id = "DHJHBGVLXVFQXAVI4VCIDQ";
+adroll_pix_id = "2R2L6YS4PND3LBSSZJT7DS";
+(function () {
+var oldonload = window.onload;
+window.onload = function(){
+   __adroll_loaded=true;
+   var scr = document.createElement("script");
+   var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+   scr.setAttribute('async', 'true');
+   scr.type = "text/javascript";
+   scr.src = host + "/j/roundtrip.js";
+   ((document.getElementsByTagName('head') || [null])[0] ||
+    document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+   if(oldonload){oldonload()}};
+}());
+</script>
+
+<!-- CrazyEgg -->
+<script type="text/javascript">
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0012/7009.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
+
+
+<!-- Perfect Audience conversion tracking. See https://www.perfectaudience.com/docs#documentation_autoopen -->
+<script type="text/javascript">
+  (function() {
+    window._pa = window._pa || {};
+    // _pa.orderId = "myUser@email.com"; // OPTIONAL: include your user's email address or order ID
+    // _pa.revenue = "19.99"; // OPTIONAL: include dynamic purchase value for the conversion
+    // _pa.onLoadEvent = "sign_up"; // OPTIONAL: name of segment/conversion to be fired on script load
+    var pa = document.createElement('script'); pa.type = 'text/javascript'; pa.async = true;
+    pa.src = ('https:' == document.location.protocol ? 'https:' : 'http:') + "//tag.perfectaudience.com/serve/506695648c54f60002000032.js";
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(pa, s);
+  })();
+</script>
+
+<!-- begin usabilla live embed code -->
+<script type="text/javascript">/*{literal}<![CDATA[*/window.lightningjs||function(c){function g(b,d){d&&(d+=(/\?/.test(d)?"&":"?")+"lv=1");c[b]||function(){var i=window,h=document,j=b,g=h.location.protocol,l="load",k=0;(function(){function b(){a.P(l);a.w=1;c[j]("_load")}c[j]=function(){function m(){m.id=e;return c[j].apply(m,arguments)}var b,e=++k;b=this&&this!=i?this.id||0:0;(a.s=a.s||[]).push([e,b,arguments]);m.then=function(b,c,h){var d=a.fh[e]=a.fh[e]||[],j=a.eh[e]=a.eh[e]||[],f=a.ph[e]=a.ph[e]||[];b&&d.push(b);c&&j.push(c);h&&f.push(h);return m};return m};var a=c[j]._={};a.fh={};a.eh={};a.ph={};a.l=d?d.replace(/^\/\//,(g=="https:"?g:"http:")+"//"):d;a.p={0:+new Date};a.P=function(b){a.p[b]=new Date-a.p[0]};a.w&&b();i.addEventListener?i.addEventListener(l,b,!1):i.attachEvent("on"+l,b);var q=function(){function b(){return["<head></head><",c,' onload="var d=',n,";d.getElementsByTagName('head')[0].",d,"(d.",g,"('script')).",i,"='",a.l,"'\"></",c,">"].join("")}var c="body",e=h[c];if(!e)return setTimeout(q,100);a.P(1);var d="appendChild",g="createElement",i="src",k=h[g]("div"),l=k[d](h[g]("div")),f=h[g]("iframe"),n="document",p;k.style.display="none";e.insertBefore(k,e.firstChild).id=o+"-"+j;f.frameBorder="0";f.id=o+"-frame-"+j;/MSIE[ ]+6/.test(navigator.userAgent)&&(f[i]="javascript:false");f.allowTransparency="true";l[d](f);try{f.contentWindow[n].open()}catch(s){a.domain=h.domain,p="javascript:var d="+n+".open();d.domain='"+h.domain+"';",f[i]=p+"void(0);"}try{var r=f.contentWindow[n];r.write(b());r.close()}catch(t){f[i]=p+'d.write("'+b().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}a.P(2)};a.l&&setTimeout(q,0)})()}();c[b].lv="1";return c[b]}var o="lightningjs",k=window[o]=g(o);k.require=g;k.modules=c}({});
+window.usabilla_live = lightningjs.require("usabilla_live", "//w.usabilla.com/81ac0e0de43d.js");
+/*]]>{/literal}*/</script>
+<!-- end usabilla live embed code -->
+
+  
+</body>
+</html>
+
