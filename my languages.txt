@@ -11,3 +11,10 @@ java
 perl
 python
 oracle
+- New learning at tavic
+
+-> jquery
+-> git - Version Control System
+-> java script Object
+-> Wrodpress
+-> Tracking data from the site
